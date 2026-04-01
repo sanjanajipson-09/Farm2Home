@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Farm2Home 🌾</title>
+
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background:#f4f9f4;
+}
+
+/* HEADER */
+header {
+    background:#2e7d32;
+    color:white;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a {
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* HERO */
+.hero {
+    background:url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854') center/cover;
+    height:350px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.hero h1 {
+    background:rgba(0,0,0,0.6);
+    padding:15px;
+    border-radius:10px;
+}
+
+/* SEARCH */
+.search {
+    text-align:center;
+    margin:20px;
+}
+
+.search input {
+    padding:10px;
+    width:300px;
+    border-radius:5px;
+}
+
+/* PRODUCTS */
+.products {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card {
+    background:white;
+    width:220px;
+    margin:15px;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width:100%;
+    height:140px;
+    border-radius:10px;
+}
+
+button {
+    background:#2e7d32;
+    color:white;
+    padding:8px;
+    border:none;
+    margin-top:10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover {
+    background:#1b5e20;
+}
+
+/* FOOTER */
+footer {
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>🌾 Farm2Home</h2>
+<nav>
+<a href="index.html"><i class="fa fa-home"></i> Home</a>
+<a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
+<a href="login.html"><i class="fa fa-user"></i> Login</a>
+</nav>
+</header>
+
+<div class="hero">
+<h1>Fresh From Farm to Your Doorstep 🍃</h1>
+</div>
+
+<div class="search">
+<input type="text" id="search" placeholder="🔍 Search fruits & vegetables..." onkeyup="searchItem()">
+</div>
+
+<div class="products" id="productList">
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg">
+<h3>🍎 Apple</h3>
+<p>₹40</p>
+<button onclick="addToCart('Apple',40)">Add 🛒</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg">
+<h3>🍌 Banana</h3>
+<p>₹30</p>
+<button onclick="addToCart('Banana',30)">Add 🛒</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg">
+<h3>🍊 Orange</h3>
+<p>₹50</p>
+<button onclick="addToCart('Orange',50)">Add 🛒</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Hapus_Mango.jpg">
+<h3>🥭 Mango</h3>
+<p>₹80</p>
+<button onclick="addToCart('Mango',80)">Add 🛒</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Tomato_je.jpg">
+<h3>🍅 Tomato</h3>
+<p>₹20</p>
+<button onclick="addToCart('Tomato',20)">Add 🛒</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Carrots.jpg">
+<h3>🥕 Carrot</h3>
+<p>₹25</p>
+<button onclick="addToCart('Carrot',25)">Add 🛒</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Potato.jpg">
+<h3>🥔 Potato</h3>
+<p>₹30</p>
+<button onclick="addToCart('Potato',30)">Add 🛒</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Onions.jpg">
+<h3>🧅 Onion</h3>
+<p>₹35</p>
+<button onclick="addToCart('Onion',35)">Add 🛒</button>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Farm2Home 🌾 | Fresh & Organic</p>
+</footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price){
+    cart.push({name, price});
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("✅ " + name + " added to cart");
+}
+
+function searchItem(){
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.getElementsByClassName("card");
+
+    for(let i=0;i<cards.length;i++){
+        let title = cards[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+        cards[i].style.display = title.includes(input) ? "" : "none";
+    }
+}
+</script>
+
+</body>
+</html>
+<section style="padding:40px; background:#e8f5e9; text-align:center;">
+
+<h2>🌿 Why Choose Farm2Home?</h2>
+
+<p style="max-width:800px; margin:auto; line-height:1.6;">
+Farm2Home is a digital platform that connects local farmers directly with customers,
+ensuring fresh, organic, and chemical-free products. We eliminate middlemen so that
+farmers get fair prices and customers receive high-quality produce at affordable rates.
+</p>
+
+<br>
+
+<div style="display:flex; justify-content:center; flex-wrap:wrap;">
+
+<div style="width:250px; margin:15px;">
+<h3>🚜 Direct From Farmers</h3>
+<p>Products are sourced directly from local farms without any intermediaries.</p>
+</div>
+
+<div style="width:250px; margin:15px;">
+<h3>🌱 100% Organic</h3>
+<p>We provide naturally grown fruits and vegetables without harmful chemicals.</p>
+</div>
+
+<div style="width:250px; margin:15px;">
+<h3>🚚 Fast Delivery</h3>
+<p>Quick and safe delivery from farm to your doorstep.</p>
+</div>
+
+<div style="width:250px; margin:15px;">
+<h3>💰 Fair Pricing</h3>
+<p>Affordable prices for customers and better profits for farmers.</p>
+</div>
+
+</div>
+
+</section>
+<section style="padding:40px; text-align:center;">
+
+<h2>🌾 About Farm2Home</h2>
+
+<p style="max-width:800px; margin:auto; line-height:1.6;">
+Farm2Home is an innovative web-based platform designed to bridge the gap between farmers and consumers.
+Our mission is to promote sustainable agriculture and provide fresh farm products directly to households.
+We aim to support local farmers, reduce food wastage, and ensure healthy living for our customers.
+</p>
+
+</section>
