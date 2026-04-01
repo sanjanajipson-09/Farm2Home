@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farm2Home - Fresh From Farm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f9f4;
+        }
+
+        header {
+            background: #2e7d32;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .section h2 {
+            margin-bottom: 30px;
+            color: #2e7d32;
+        }
+
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 250px;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin: 15px 0;
+        }
+
+        .card p {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #2e7d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .about {
+            background: #e8f5e9;
+        }
+
+        footer {
+            background: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media(max-width: 768px) {
+            .products {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌾 Farm2Home</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Login</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Fresh From Farm to Your Doorstep</h2>
+</section>
+
+<section class="section" id="products">
+    <h2>Our Fresh Products</h2>
+    <div class="products">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce" alt="apples">
+            <h3>Organic Apples</h3>
+            <p>₹40 per kg</p>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1508747703725-719777637510?w=400" alt="Onions" width="300">
+
+
+            <h3>Onions</h3>
+            <p>₹40 per kg</p>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400" alt="Bananas" width="300">
+            <h3>Banana</h3>
+            <p>₹30 per kg</p>
+            <a href="#" class="btn">Add to Cart</a>
+        </div>
+
+    </div>
+</section>
+
+<section class="section about" id="about">
+    <h2>About Farm2Home</h2>
+    <p>
+        Farm2Home connects local farmers directly with customers.
+        We ensure fresh, organic, and high-quality products delivered
+        straight from the farm to your home.
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 Farm2Home | College Project</p>
+</footer>
+
+</body>
+</html>
